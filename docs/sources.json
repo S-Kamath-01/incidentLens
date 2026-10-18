@@ -1,0 +1,21 @@
+{
+  "postgres_version": "17",
+  "license_url": "https://www.postgresql.org/about/licence/",
+  "sources": [
+    {
+      "id": "explicit-locking",
+      "title": "Explicit Locking",
+      "url": "https://www.postgresql.org/docs/17/explicit-locking.html"
+    },
+    {
+      "id": "runtime-config-connection",
+      "title": "Connections and Authentication",
+      "url": "https://www.postgresql.org/docs/17/runtime-config-connection.html"
+    },
+    {
+      "id": "monitoring-stats",
+      "title": "The Cumulative Statistics System",
+      "url": "https://www.postgresql.org/docs/17/monitoring-stats.html"
+    }
+  ]
+}

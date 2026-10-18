@@ -78,3 +78,23 @@ Public application hosting is outside the initial scope.
 - No automatic execution of generated SQL
 - Secrets excluded from source control and logs
 - Dependency and model licenses reviewed before adoption
+
+## Implemented ingestion pipeline
+
+1. A source manifest identifies selected PostgreSQL 17 documentation pages.
+2. The downloader saves HTML snapshots and provenance metadata.
+3. Snapshot hashes and sizes are checked before extraction.
+4. The extractor selects the document body and preserves structured blocks.
+5. Definition lists are separated into individual entries.
+6. Lock matrices and supported monitoring tables become labeled passages.
+7. Candidate passages are consolidated into JSONL records.
+
+Intermediate files retain table and list HTML for inspection.
+Derived records retain source identity, section context, and citations.
+
+The current output is not an embedding index. Token-aware sizing and
+splitting are pending. References between passages are not automatically
+resolved, and section-level citations do not prove factual support.
+
+Scripts currently provide the ingestion entry points. Reusable pipeline
+logic can move into src/incidentlens as application integration develops.

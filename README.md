@@ -13,9 +13,12 @@ causes, missing diagnostic information, and suggested next checks.
 
 ## Status
 
-Under development. The repository currently contains the initial project
-structure and architecture documentation. Retrieval, generation, and the
-application interface are not yet implemented.
+The documentation ingestion pipeline is implemented. It downloads selected
+PostgreSQL 17 pages, verifies snapshot integrity, extracts structured content,
+and produces source-attributed candidate passages.
+
+Token-aware passage sizing, retrieval, answer generation, and the user
+interface are not yet implemented.
 
 ## Initial scope
 
@@ -47,14 +50,48 @@ See [Architecture](docs/architecture.md) for design details.
 
 ## Development setup
 
-Create a virtual environment:
+Create a virtual environment and install dependencies:
 
 ```bash
 python -m venv .venv
 ```
 
-Application installation and launch instructions will be added when the first
-runnable implementation is available.
+Activate the environment using the command appropriate for your shell.
+On Windows PowerShell:
+
+```powershell
+.\.venv\Scripts\Activate.ps1
+python -m pip install -r requirements.txt
+```
+
+## Prepare the documentation corpus
+
+Download the source snapshots once:
+
+```bash
+python scripts/download_sources.py
+```
+
+The downloader refuses to overwrite existing snapshots. Preserve existing
+downloads unless intentionally refreshing the corpus.
+
+Run the processing pipeline:
+
+```bash
+python scripts/inspect_sources.py
+python scripts/extract_sources.py
+python scripts/check_extraction.py
+python scripts/prepare_entries.py
+python scripts/prepare_lock_tables.py
+python scripts/prepare_monitoring_tables.py
+python scripts/build_passages.py
+```
+
+The output is `data/processed/passages.jsonl`. Each line contains a candidate
+passage with source metadata and a citation URL.
+
+These passages have not yet been sized for an embedding model.
+Raw documents and generated outputs are excluded from Git.
 
 ## Data and operational boundaries
 
