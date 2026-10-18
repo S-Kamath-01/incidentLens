@@ -1,0 +1,48 @@
+# Python environment and generated files
+.venv/
+venv/
+__pycache__/
+*.py[cod]
+*.egg-info/
+build/
+dist/
+
+# Test and development caches
+.pytest_cache/
+.ruff_cache/
+.mypy_cache/
+.coverage
+htmlcov/
+
+# Credentials
+.env
+.env.*
+!.env.example
+
+# Downloaded documents and generated indexes
+data/raw/
+data/processed/
+data/indexes/
+
+# Model caches
+.cache/
+models/
+
+# Local logs
+logs/
+*.log
+
+# Editor and OS files
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+
+# Personal study notes
+/notes/
+/docs/learning.md
+/LLM_RAG_Interview_Notes.md
+
+# Frontend dependencies and generated output
+node_modules/
+ui/dist/
