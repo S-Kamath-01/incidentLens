@@ -50,29 +50,26 @@ Answer support will also require evaluation.
 ## Proposed components
 
 - Python application logic
-- FastAPI API
-- Streamlit interface
+- FastAPI backend
+- React + TypeScript interface, developed with Vite
 - BM25 lexical retrieval
-- Sentence-Transformers embeddings
+- BAAI/bge-small-en-v1.5 embeddings, loaded through Sentence Transformers
+- Local CPU execution for embeddings
 - FAISS vector search
-- Hosted LLM provider, to be selected
+- Local answer generation through Ollama
+- Gemma 3 4B as the initial generator candidate, subject to hardware testing
 - Separate disposable PostgreSQL incident lab
 
-## Evaluation
+## Execution and distribution
 
-Compare BM25, dense retrieval, and hybrid retrieval.
+The interface, backend, retrieval pipeline, and answering model run on
+the user's computer. The initial version requires no hosted inference API.
 
-Measure:
-- Hit@k
-- Recall@k
-- Citation support
-- Insufficient-evidence handling
-- Response latency
-- Token usage
+GitHub contains source code, setup instructions, and project documentation.
+Downloaded model weights, generated indexes, credentials, and personal study
+notes are excluded from version control.
 
-Split related incident examples together when creating development and
-test sets to reduce leakage.
-
+Public application hosting is outside the initial scope.
 ## Security boundaries
 
 - Approved documentation sources only
